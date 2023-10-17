@@ -3,6 +3,7 @@ import { TouchableOpacity, Image } from 'react-native';
 import { colors, fonts } from '../../styles';
 
 import TabNavigator from './MainTabNavigator';
+import MatrimonyRegistration from '../Matrimony/Registration/MatrimonyRegistration';
 
 // const headerLeftComponent = (props) => {
 //   return (
@@ -40,7 +41,10 @@ const StackNavigationData = [
       fontSize: 18,
     },
   },
-  
+  {
+    name:"MatrimonySubscription",
+    component: MatrimonyRegistration
+  }
   // {
   //   name:"Notifications",
   //   component:Notifications

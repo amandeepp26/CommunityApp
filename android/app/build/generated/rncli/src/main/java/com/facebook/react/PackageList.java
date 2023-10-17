@@ -11,7 +11,30 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
-
+// @react-native-async-storage/async-storage
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
+// @react-native-community/clipboard
+import com.reactnativecommunity.clipboard.ClipboardPackage;
+// @react-native-community/datetimepicker
+import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
+// react-native-device-info
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+// react-native-gesture-handler
+import com.swmansion.gesturehandler.RNGestureHandlerPackage;
+// react-native-image-picker
+import com.imagepicker.ImagePickerPackage;
+// react-native-reanimated
+import com.swmansion.reanimated.ReanimatedPackage;
+// react-native-safe-area-context
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+// react-native-screens
+import com.swmansion.rnscreens.RNScreensPackage;
+// react-native-ui-lib
+import com.wix.reactnativeuilib.highlighterview.HighlighterViewPackage;
+import com.wix.reactnativeuilib.keyboardinput.KeyboardInputPackage;
+import com.wix.reactnativeuilib.textinput.TextInputDelKeyHandlerPackage;
+// react-native-vector-icons
+import com.oblador.vectoricons.VectorIconsPackage;
 
 public class PackageList {
   private Application application;
@@ -56,7 +79,20 @@ public class PackageList {
 
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
-      new MainReactPackage(mConfig)
+      new MainReactPackage(mConfig),
+      new AsyncStoragePackage(),
+      new ClipboardPackage(),
+      new RNDateTimePickerPackage(),
+      new RNDeviceInfo(),
+      new RNGestureHandlerPackage(),
+      new ImagePickerPackage(),
+      new ReanimatedPackage(),
+      new SafeAreaContextPackage(),
+      new RNScreensPackage(),
+      new HighlighterViewPackage(),
+      new TextInputDelKeyHandlerPackage(),
+      new KeyboardInputPackage(getApplication()),
+      new VectorIconsPackage()
     ));
   }
 }

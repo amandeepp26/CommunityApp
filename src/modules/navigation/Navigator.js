@@ -33,6 +33,16 @@ import { Linking } from 'react-native';
 import Splash from '../Splash/Splash';
 import { connect } from 'react-redux';
 import Login from '../auth/Login';
+import Otp from '../auth/Verify-otp';
+import Signup from '../auth/Signup';
+import SignupVerification from '../auth/SignupVerification';
+import MatrimonyRegistration from '../Matrimony/Registration/MatrimonyRegistration';
+import Search from '../Matrimony/Search';
+import MatrimonyListing from '../Matrimony/MatrimonyListing';
+import Pricing from '../Matrimony/Pricing';
+import ChatList from '../Matrimony/chat/ChatList';
+import ChatBox from '../Matrimony/chat/ChatBox';
+import ProfileDetail from '../Matrimony/ProfileDetail';
 
 // const drawerData = [
 //   {
@@ -275,7 +285,20 @@ function Navigator(props) {
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" component={Login}/>
+        <Stack.Screen name="Otp" component={Otp} />
+        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="SignupOtp" component={SignupVerification} />
+        <Stack.Screen name="Matrimony" component={TabNavigator} /> 
+        <Stack.Screen name="MatrimonySubscription" component={MatrimonyRegistration} /> 
+        <Stack.Screen name="pricing" component={Pricing} /> 
+        <Stack.Screen name="matrimonySearch" component={Search} /> 
+        <Stack.Screen name="MatrimonyListing" component={MatrimonyListing} /> 
+        <Stack.Screen name="ChatList" component={ChatList} /> 
+        <Stack.Screen name="ChatBox" component={ChatBox} /> 
+        <Stack.Screen name="ProfileDetail" component={ProfileDetail} /> 
+
+
         {/* <Stack.Screen name="OtpVerification" component={OtpVerification} />
         <Stack.Screen
           name="SignupOtpVerification"

@@ -86,12 +86,12 @@ export default StyleSheet.create({
   tabBarIconFocused: {
     width: 22,
     height: 22,
-    tintColor: colors.primaryOrange,
+    tintColor: colors.primaryColor,
   },
   
   h1: {
     color: colors.black,
-    fontSize: 26,
+    fontSize: 28,
     fontWeight:"bold",
     fontFamily: fonts.primaryBold
   },
@@ -119,7 +119,8 @@ export default StyleSheet.create({
     color: colors.black,
     fontSize: 14,
     fontFamily: fonts.primaryMedium,
-    marginTop: 1
+    marginTop: 1,
+    fontWeight:700
   },
   p: {
     fontSize: 13,

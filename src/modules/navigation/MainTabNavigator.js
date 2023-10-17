@@ -76,7 +76,7 @@ function TabNavigator({navigation}) {
                     fontFamily: fonts.primarySemiBold,
                     fontSize: 13,
                     marginTop: 0,
-                    color: colors.primaryOrange,
+                    color: colors.primaryColor,
                   }}>
                   {item.name}
                 </Text>

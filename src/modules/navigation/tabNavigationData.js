@@ -6,10 +6,13 @@
 // import SearchLocality from '../search/SearchLocality';
 
 import Splash from "../Splash/Splash";
+import Home from "../home/Home";
 
 
-const homeIcon = require('@images/logoIcon.png');
-// const searchIcon = require('@images/search.png');
+const homeIcon = require('@images/home.png');
+const searchIcon = require('@images/search.png');
+const groupIcon = require('@images/group.png');
+const userIcon = require('@images/user.png');
 // const heartIcon = require('@images/heart.png');
 // const accountIcon = require('@images/account.png');
 
@@ -18,9 +21,24 @@ const homeIcon = require('@images/logoIcon.png');
 
 const tabNavigationData = [
   {
-    name: 'Home',
-    component: Splash,
+    name: 'Matrimony',
+    component: Home,
     icon: homeIcon,
+  },
+  {
+    name: 'Search',
+    component: Home,
+    icon: searchIcon,
+  },
+  {
+    name: 'Community',
+    component: Home,
+    icon: groupIcon,
+  },
+  {
+    name: 'Profile',
+    component: Home,
+    icon: userIcon,
   },
   // {
   //   name:"Search",
