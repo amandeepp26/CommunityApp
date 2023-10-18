@@ -1,28 +1,33 @@
-import {StyleSheet, Text, View, Pressable, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native';
+import React, { useState } from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
-import {Icon} from 'react-native-elements';
-import {CheckBox} from 'react-native-elements';
-import DateTimePicker from 'react-native-modal-datetime-picker';
-import moment from 'moment';
 import styles from '../../navigation/styles';
 import RNSTextInput from '../../../components/RNSTextInput';
-import {colors, fonts} from '../../../styles';
-import Button from '../../../components/Button';
+import { colors, fonts } from '../../../styles';
 
-export default function Step2({navigation}) {
-  const [selectedItem, setSelectedItem] = useState('');
+export default function Step2({ navigation }) {
+  const [selectedMarriedSister, setSelectedMarriedSister] = useState('');
+  const [selectedUnmarriedSister, setSelectedUnmarriedSister] = useState('');
+  const [selectedMarriedBrother, setSelectedMarriedBrother] = useState('');
+  const [selectedUnmarriedBrother, setSelectedUnmarriedBrother] = useState('');
+  const [familyType,setFamilyType] = useState('');
   const [fatherName, setfatherName] = useState('');
   const [fatherOccupation, setfatherOccupation] = useState('');
   const [annualIncome, setannualIncome] = useState('');
   const [phone, setphone] = useState('')
 
-  const data = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
+  const marriedSister = ['1 married', '2 married', '3 married', '4 married', '5 married'];
+  const unmarriedSister = ['1 unmarried', '2 unmaried', '3 unmarried', '4 unmarried', '5 unmarried']
+  const marriedBrother = ['1 married', '2 married', '3 married', '4 married', '5 married'];
+  const unmarriedBrother = ['1 unmarried', '2 unmaried', '3 unmarried', '4 unmarried', '5 unmarried'];
+
+  const familyTypeOptions = ['Joint Family', 'Nuclear Family', 'Others'];
+
   return (
     <ScrollView>
       <View style={style.container}>
-        <View style={{width: '100%', paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Father's Name
           </Text>
           <RNSTextInput
@@ -31,8 +36,8 @@ export default function Step2({navigation}) {
             value={fatherName}
           />
         </View>
-        <View style={{width: '100%', paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Father's Occupation
           </Text>
           <RNSTextInput
@@ -41,8 +46,8 @@ export default function Step2({navigation}) {
             value={fatherOccupation}
           />
         </View>
-        <View style={{width: '100%', paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Annual Income
           </Text>
           <RNSTextInput
@@ -53,8 +58,8 @@ export default function Step2({navigation}) {
             maxLength={10}
           />
         </View>
-        <View style={{width: '100%', paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Mobile No.
           </Text>
           <RNSTextInput
@@ -64,129 +69,129 @@ export default function Step2({navigation}) {
             value={phone}
           />
         </View>
-        <View style={{paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Sisters
           </Text>
-          <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-          <SelectDropdown
-            data={data}
-            buttonStyle={style.dropdownText}
-            buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
-            rowTextStyle={{
-              left: 10,
-              position: 'absolute',
-            }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
-            defaultButtonText="Married"
-          />
-           <SelectDropdown
-            data={data}
-            buttonStyle={style.dropdownText}
-            buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
-            rowTextStyle={{
-              left: 10,
-              position: 'absolute',
-            }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
-            defaultButtonText="Unmarried"
-          />
+          <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+            <SelectDropdown
+              data={marriedSister}
+              buttonStyle={style.dropdownText}
+              buttonTextStyle={style.placeholder}
+              onSelect={selectedItem => {
+                setSelectedMarriedSister(selectedItem);
+              }}
+              // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                // text to show after item is selected
+                return selectedItem;
+              }}
+              dropdownStyle={{ borderRadius: 10 }}
+              rowTextStyle={{
+                left: 10,
+                position: 'absolute',
+              }}
+              rowTextForSelection={(item, index) => {
+                // text to show for each item in the dropdown
+                return item;
+              }}
+              defaultButtonText="Married"
+            />
+            <SelectDropdown
+              data={unmarriedSister}
+              buttonStyle={style.dropdownText}
+              buttonTextStyle={style.placeholder}
+              onSelect={selectedItem => {
+                setSelectedUnmarriedSister(selectedItem);
+              }}
+              // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                // text to show after item is selected
+                return selectedItem;
+              }}
+              dropdownStyle={{ borderRadius: 10 }}
+              rowTextStyle={{
+                left: 10,
+                position: 'absolute',
+              }}
+              rowTextForSelection={(item, index) => {
+                // text to show for each item in the dropdown
+                return item;
+              }}
+              defaultButtonText="Unmarried"
+            />
           </View>
         </View>
-        <View style={{paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Brothers
           </Text>
-          <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-          <SelectDropdown
-            data={data}
-            buttonStyle={style.dropdownText}
-            buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
-            rowTextStyle={{
-              left: 10,
-              position: 'absolute',
-            }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
-            defaultButtonText="Married"
-          />
+          <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
             <SelectDropdown
-            data={data}
-            buttonStyle={style.dropdownText}
-            buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
-            rowTextStyle={{
-              left: 10,
-              position: 'absolute',
-            }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
-            defaultButtonText="unmarried"
-          />
+              data={marriedBrother}
+              buttonStyle={style.dropdownText}
+              buttonTextStyle={style.placeholder}
+              onSelect={selectedItem => {
+                setSelectedMarriedBrother(selectedItem);
+              }}
+              // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                // text to show after item is selected
+                return selectedItem;
+              }}
+              dropdownStyle={{ borderRadius: 10 }}
+              rowTextStyle={{
+                left: 10,
+                position: 'absolute',
+              }}
+              rowTextForSelection={(item, index) => {
+                // text to show for each item in the dropdown
+                return item;
+              }}
+              defaultButtonText="Married"
+            />
+            <SelectDropdown
+              data={unmarriedBrother}
+              buttonStyle={style.dropdownText}
+              buttonTextStyle={style.placeholder}
+              onSelect={selectedItem => {
+                setSelectedUnmarriedBrother(selectedItem);
+              }}
+              // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                // text to show after item is selected
+                return selectedItem;
+              }}
+              dropdownStyle={{ borderRadius: 10 }}
+              rowTextStyle={{
+                left: 10,
+                position: 'absolute',
+              }}
+              rowTextForSelection={(item, index) => {
+                // text to show for each item in the dropdown
+                return item;
+              }}
+              defaultButtonText="unmarried"
+            />
           </View>
         </View>
-        <View style={{paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Family Type
           </Text>
           <SelectDropdown
-            data={data}
-            buttonStyle={[style.dropdownText,{width:"100%"}]}
+            data={familyTypeOptions}
+            buttonStyle={[style.dropdownText, { width: "100%" }]}
             buttonTextStyle={style.placeholder}
             onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
+              setFamilyType(selectedItem);
             }}
             // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
             buttonTextAfterSelection={(selectedItem, index) => {
               // text to show after item is selected
               return selectedItem;
             }}
-            dropdownStyle={{borderRadius: 10}}
+            dropdownStyle={{ borderRadius: 10 }}
             rowTextStyle={{
               left: 10,
               position: 'absolute',

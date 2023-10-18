@@ -43,10 +43,7 @@ const style = StyleSheet.create({
     
     textinput:{
         width:'100%',
-        // marginLeft:10,
-        // marginTop:5,
-        // height:47,
-        borderRadius:15,
+        borderRadius:10,
         backgroundColor:"#fff",
         borderWidth:1,
         borderColor:"#d3d3d3",
@@ -59,7 +56,6 @@ const style = StyleSheet.create({
         alignSelf:"center",
         alignItems:"center",
         justifyContent:"center",
-        // fontWeight:"bold"
     },
 });
 

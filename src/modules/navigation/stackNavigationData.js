@@ -1,9 +1,13 @@
-import React from 'react';
-import { TouchableOpacity, Image } from 'react-native';
 import { colors, fonts } from '../../styles';
-
 import TabNavigator from './MainTabNavigator';
 import MatrimonyRegistration from '../Matrimony/Registration/MatrimonyRegistration';
+import Pricing from '../Matrimony/Pricing';
+import Search from '../Matrimony/Search';
+import MatrimonySearch from '../Matrimony/Search';
+import MatrimonyListing from '../Matrimony/MatrimonyListing';
+import ChatList from '../Matrimony/chat/ChatList';
+import ChatBox from '../Matrimony/chat/ChatBox';
+import ProfileDetail from '../Matrimony/ProfileDetail';
 
 // const headerLeftComponent = (props) => {
 //   return (
@@ -44,12 +48,31 @@ const StackNavigationData = [
   {
     name:"MatrimonySubscription",
     component: MatrimonyRegistration
+  },
+  {
+    name:'Pricing',
+    component:Pricing
+  },
+  {
+    name:'MatrimonySearch',
+    component:MatrimonySearch
+  },
+  {
+    name:'MatrimonyListing',
+    component:MatrimonyListing
+  },
+  {
+    name:'ChatList',
+    component:ChatList
+  },
+  {
+    name:'ChatBox',
+    component:ChatBox
+  },
+  {
+    name:'ProfileDetail',
+    component:ProfileDetail
   }
-  // {
-  //   name:"Notifications",
-  //   component:Notifications
-  // }
-  
 ]
 
 export default StackNavigationData;

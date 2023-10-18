@@ -22,7 +22,7 @@ export default function Pricing({navigation}) {
         <Text style={[styles.p, {fontWeight: '700'}]}>Pricing</Text>
       </View>
       <View>
-        <Text style={style.pricingText}>$2.50</Text>
+        <Text style={style.pricingText}>₹ 2.50</Text>
         <Text style={[styles.h6, {fontWeight: '600', paddingLeft: 5}]}>
           Per User Per Month
         </Text>
@@ -31,7 +31,7 @@ export default function Pricing({navigation}) {
         <Button
           text={'Purchase Plan'}
           backgroundColor={colors.primaryColor}
-          onpress={() => navigation.navigate('matrimonySearch')}
+          onpress={() => navigation.navigate('MatrimonySearch')}
         />
       </View>
       <View style={{paddingVertical: 20}}>

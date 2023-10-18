@@ -1,32 +1,33 @@
-import {StyleSheet, Text, View, Pressable, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native';
+import React, { useState } from 'react';
 import styles from '../navigation/styles';
 import RNSTextInput from '../../components/RNSTextInput';
-import {colors, fonts} from '../../styles';
+import { colors, fonts } from '../../styles';
 import SelectDropdown from 'react-native-select-dropdown';
 import DatePicker from 'react-native-datepicker';
 import Button from '../../components/Button';
-import {Icon} from 'react-native-elements';
-import {CheckBox} from 'react-native-elements';
+import { Icon } from 'react-native-elements';
+import { CheckBox } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import * as ImagePicker from 'react-native-image-picker';
-import {Toast} from 'react-native-toast-message';
-import {Image} from 'react-native';
+import { Toast } from 'react-native-toast-message';
+import { Image } from 'react-native';
+import Modal from 'react-native-modal'
 
-export default function Signup({navigation}) {
+export default function Signup({ navigation }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [selectedItem, setSelectedItem] = useState('');
   const [dob, set_dob] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const [isMaleSelected, setIsMaleSelected] = useState(false);
   const [isFemaleSelected, setIsFemaleSelected] = useState(false);
-  const [chosenDate, setChosenDate] = useState('');
-  const [popupVisible, setPopupVisible] = useState(false);
   const [image, setImage] = useState(null);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [gender,setGender] = useState('')
 
-  const handleDateChange = newDate => {
-    setChosenDate(newDate);
-  };
   const handlePicker = date => {
     if (dob == '') {
       set_dob(dob);
@@ -57,12 +58,13 @@ export default function Signup({navigation}) {
         // alert('ImagePicker Error: ' + response.error);
       } else {
         // const fileSize = response.data.length * (3 / 4) - 2;
-        // console.log('filesize', fileSize);
-        if (response.fileSize > 314572) {
-          alert('hyy');
+        console.log('filesize', response);
+        if (response.assets[0].fileSize > 314572) {
+          alert('Image size is too big!');
         } else {
           let source = response.data;
-          setImage(response.uri);
+          setImage(response.assets[0].uri);
+          setModalVisible(false);
           // console.warn(source);
         }
       }
@@ -90,40 +92,54 @@ export default function Signup({navigation}) {
       } else {
         // const fileSize = response.data.length * (3 / 4) - 2;
         // console.log('filesize', fileSize);
-        if (response.fileSize > 314572) {
-          alert('hy');
+        if (response.assets[0].fileSize > 314572) {
+          alert('Image size is too big!');
         } else {
           let source = response.data;
           setImage(response.assets[0].uri);
+          setModalVisible(false);
           console.warn('cam res', response);
         }
       }
     });
   };
 
-  const data = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
+  const casteReligionOptions = [
+    'Hindu',
+    'Muslim',
+    'Christian',
+    'Sikh',
+    'Buddhist',
+    'Jain',
+    'Brahmin',
+    'Kshatriya',
+    'Vaishya',
+    'Shudra',
+    'Other',
+    // Add more caste options as needed
+  ];
   return (
     <ScrollView>
       <View style={style.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Icon
             name="person-add-outline"
             type="ionicon"
             color={colors.black}
             size={30}
           />
-          <Text style={[styles.h1, {textAlign: 'center', paddingLeft: 10}]}>
+          <Text style={[styles.h1, { textAlign: 'center', paddingLeft: 10 }]}>
             Create New Account
           </Text>
         </View>
         <View
           style={{
-            borderWidth: 2,
-            width: 80,
-            height: 80,
+            borderWidth: 1,
+            width: 100,
+            height: 100,
             borderRadius: 50,
             alignSelf: 'center',
-            marginVertical: 20,
+            marginTop: 10,
             borderColor: colors.grey,
             justifyContent: 'center',
             alignItems: 'center',
@@ -137,12 +153,12 @@ export default function Signup({navigation}) {
             />
           ) : (
             <Image
-              source={{uri: image}}
-              style={{height: '100%', width: '100%', borderRadius: 50}}
+              source={{ uri: image }}
+              style={{ height: '100%', width: '100%', borderRadius: 50 }}
             />
           )}
           <Pressable
-            onPress={() => camera()}
+            onPress={() => setModalVisible(true)}
             style={{
               position: 'absolute',
               backgroundColor: '#696969',
@@ -161,25 +177,61 @@ export default function Signup({navigation}) {
             />
           </Pressable>
         </View>
-        <View style={{width: '100%', paddingTop: 20}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <Modal isVisible={isModalVisible}>
+          <View style={style.modalContainer}>
+            <Pressable
+                onPress={e => {
+                    camera();
+                }}
+                style={{padding: 15}}>
+                <Text
+                  style={[
+                    styles.h5,
+                    {color: '#000', fontWeight: '100', marginTop: 0},
+                  ]}>
+                  Take from camera...
+                </Text>
+              </Pressable>
+            <Pressable
+                onPress={e => {
+                    gallery();
+                  
+                }}
+                style={{padding: 15}}>
+                <Text
+                  style={[
+                    styles.h5,
+                    {color: '#000', fontWeight: '100', marginTop: -10},
+                  ]}>
+                  Choose from Library...
+                </Text>
+              </Pressable>
+            <Pressable
+                onPress={e => {
+                    setModalVisible(!isModalVisible);
+                }}
+                style={{alignSelf: 'flex-end', right: 15,top:10}}>
+                <Text style={[styles.h6, {color: 'red'}]}>Cancel</Text>
+              </Pressable>
+          </View>
+        </Modal>
+        <View style={{ width: '100%', paddingTop: 20 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Full Name
           </Text>
           <RNSTextInput
             placeHolder={'Enter your Full Name'}
-            keyboard={'numeric'}
-            onChangeText={e => setPhoneNumber(e)}
-            value={''}
-            maxLength={10}
+            onChangeText={e => setName(e)}
+            value={name}
           />
         </View>
 
-        <View style={{paddingTop: 20}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 20 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Select Caste
           </Text>
           <SelectDropdown
-            data={data}
+            data={casteReligionOptions}
             buttonStyle={style.dropdownText}
             buttonTextStyle={style.placeholder}
             onSelect={selectedItem => {
@@ -190,10 +242,10 @@ export default function Signup({navigation}) {
               // text to show after item is selected
               return selectedItem;
             }}
-            dropdownStyle={{borderRadius: 10}}
+            dropdownStyle={{ borderRadius: 10 }}
             rowTextStyle={{
-              left: 10,
-              position: 'absolute',
+              textAlign:'left',
+              padding:10
             }}
             rowTextForSelection={(item, index) => {
               // text to show for each item in the dropdown
@@ -203,54 +255,59 @@ export default function Signup({navigation}) {
           />
         </View>
 
-        <View style={{width: '100%', paddingTop: 20}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 20 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Email address
           </Text>
           <RNSTextInput
             placeHolder={'Enter your Email Address'}
-            keyboard={'numeric'}
-            onChangeText={e => setPhoneNumber(e)}
-            value={''}
-            maxLength={10}
+            onChangeText={e => setEmail(e)}
+            value={email}
           />
         </View>
 
-        <View style={{width: '100%', paddingTop: 20}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 20 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Mobile Number
           </Text>
           <RNSTextInput
             placeHolder={'Enter your Mobile Number'}
             keyboard={'numeric'}
             onChangeText={e => setPhoneNumber(e)}
-            value={''}
-            maxLength={10}
-          />
-        </View>
-
-        <View style={{width: '100%', paddingTop: 20}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
-            Password
-          </Text>
-          <RNSTextInput
-            placeHolder={'Enter your Password'}
-            keyboard={'numeric'}
-            onChangeText={e => setPhoneNumber(e)}
-            value={''}
+            value={phoneNumber}
             maxLength={10}
           />
         </View>
 
         <Pressable
           onPress={() => setIsVisible(true)}
-          style={{width: '100%', paddingTop: 20}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+          style={{ width: '100%', paddingTop: 20 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Enter Date of Birth
           </Text>
-          <Pressable onPress={() => setIsVisible(true)}>
-            <RNSTextInput placeHolder={'Select Date of Birth'} value={dob} />
-            <View style={{position: 'absolute', right: 10, bottom: 10}}>
+          <Pressable onPress={() => setIsVisible(true)} style={{
+            width: '100%',
+            borderRadius: 10,
+            backgroundColor: "#fff",
+            borderWidth: 1,
+            borderColor: "#d3d3d3",
+            paddingHorizontal: 15,
+            paddingRight: 50,
+            fontSize: 14,
+            paddingVertical: 15,
+            color: colors.gray,
+            fontFamily: fonts.primaryRegular,
+            alignSelf: "center",
+            // alignItems:"center",
+            // justifyContent:"center",
+          }}>
+            <Text style={{
+              color: colors.gray,
+              fontFamily: fonts.primaryRegular,
+            }}>
+              {dob != '' ? dob : 'Enter Date of birth'}
+            </Text>
+            <View style={{ position: 'absolute', right: 10, bottom: 10 }}>
               <Icon name="calendar-outline" type="ionicon" color={'#696969'} />
             </View>
           </Pressable>
@@ -264,41 +321,49 @@ export default function Signup({navigation}) {
           onConfirm={handlePicker}
           onCancel={() => setIsVisible(false)}
         />
-        <View style={{width: '100%', paddingTop: 20}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 20 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Gender
           </Text>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <CheckBox
               title="Male"
-              checked={isMaleSelected}
+              checked={gender=='Male'}
               containerStyle={{
-                backgroundColor: isMaleSelected ? colors.primaryBlue : '#fff',
+                backgroundColor: gender=='Male' ? colors.primaryBlue : '#fff',
                 borderWidth: 0,
                 flex: 1,
                 marginRight: 10,
               }}
-              textStyle={{color: isMaleSelected ? '#fff' : colors.gray}}
-              checkedColor={isMaleSelected ? '#fff' : colors.primaryBlue}
+              textStyle={{ color: gender=='Male' ? '#fff' : colors.gray }}
+              checkedColor={gender=='Male' ? '#fff' : colors.primaryBlue}
               onPress={() => {
-                setIsMaleSelected(!isMaleSelected);
-                setIsFemaleSelected(false); // Deselect female if male is selected
+                if(gender=="" || "Female"){
+                setGender("Male")
+                }
+                else{
+                  setGender('')
+                }
               }}
             />
             <CheckBox
               title="Female"
-              checked={isFemaleSelected}
+              checked={gender=='Female'}
               containerStyle={{
-                backgroundColor: isFemaleSelected ? 'pink' : '#fff',
+                backgroundColor: gender=='Female' ? 'pink' : '#fff',
                 borderWidth: 0,
                 flex: 1,
                 marginLeft: 10,
               }}
-              textStyle={{color: isFemaleSelected ? '#fff' : colors.gray}}
-              checkedColor={isFemaleSelected ? '#fff' : colors.primaryPink}
+              textStyle={{ color: gender=='Female' ? '#fff' : colors.gray }}
+              checkedColor={gender=='Female' ? '#fff' : colors.primaryPink}
               onPress={() => {
-                setIsFemaleSelected(!isFemaleSelected);
-                setIsMaleSelected(false); // Deselect male if female is selected
+                if(gender=="" || "Male"){
+                setGender("Female")
+                }
+                else{
+                  setGender('')
+                }
               }}
             />
           </View>
@@ -356,5 +421,24 @@ const style = StyleSheet.create({
     fontSize: 16,
     textAlign: 'left',
     color: 'gray',
+  },
+   // Modal styles
+   modalContainer: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    marginBottom: 10,
+  },
+  modalOption: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+  },
+  modalOptionText: {
+    fontSize: 18,
   },
 });

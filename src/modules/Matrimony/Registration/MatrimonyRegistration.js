@@ -74,7 +74,7 @@ export default function MatrimonyRegistration({navigation}) {
           label="Professional Details"
             nextBtnTextStyle={buttonTextStyle}
           previousBtnTextStyle={previousButtonTextStyle}
-          onSubmit={() => navigation.navigate('pricing')}>
+          onSubmit={() => navigation.navigate('Pricing')}>
           <View style={{paddingHorizontal: 25}}>
             <Step3 />
           </View>

@@ -1,242 +1,185 @@
-import {StyleSheet, Text, View, Pressable, ScrollView,} from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { View, Text, TextInput, ScrollView, StyleSheet } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
-import {Icon} from 'react-native-elements';
-import {CheckBox} from 'react-native-elements';
-import DateTimePicker from 'react-native-modal-datetime-picker';
-import moment from 'moment';
-import styles from '../../navigation/styles';
 import RNSTextInput from '../../../components/RNSTextInput';
-import { colors, fonts } from '../../../styles';
-import Button from '../../../components/Button';
+import styles from '../../navigation/styles';
+import { colors } from '../../../styles';
 
-export default function Step1({navigation}) {
-  const [selectedItem, setSelectedItem] = useState('');
-  const [dob, set_dob] = useState('');
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMaleSelected, setIsMaleSelected] = useState(false);
-  const [isFemaleSelected, setIsFemaleSelected] = useState(false);
-  const [chosenDate, setChosenDate] = useState('');
+export default function Step1({ navigation }) {
+  const [selectedComplexion, setSelectedComplexion] = useState('');
+  const [selectedBloodGroup, setSelectedBloodGroup] = useState('');
+  const [selectedSpectacles, setSelectedSpectacles] = useState('');
+  const [selectedMangalik, setSelectedMangalik] = useState('');
+  const [selectedEducation, setSelectedEducation] = useState('');
+  const [selectedHobbies, setSelectedHobbies] = useState('');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [address, setAddress] = useState('');
 
-  const handleDateChange = newDate => {
-    setChosenDate(newDate);
-  };
-  const handlePicker = date => {
-    if (dob == '') {
-      set_dob(dob);
-    }
-    setIsVisible(false);
-    console.warn(date);
-    set_dob(moment(date).format('DD/MMM/yyyy'));
-  };
-  const data = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
+  const complexionOptions = ['Fair', 'Medium', 'Olive', 'Dark', 'Other'];
+  const bloodGroupOptions = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
+  const spectaclesOptions = ['Yes', 'No'];
+  const mangalikOptions = ['Yes', 'No', 'Don\'t Know'];
+  const educationOptions = [
+    'High School',
+    'Associate Degree',
+    'Bachelor\'s Degree',
+    'Master\'s Degree',
+    'Ph.D.',
+    'Other',
+  ];
+  
+
   return (
     <ScrollView>
       <View style={style.container}>
-      <View style={{paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Complexion
           </Text>
           <SelectDropdown
-            data={data}
+            data={complexionOptions}
             buttonStyle={style.dropdownText}
             buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
+            onSelect={(selectedItem) => setSelectedComplexion(selectedItem)}
+            buttonTextAfterSelection={(selectedItem, index) => selectedItem}
+            dropdownStyle={{ borderRadius: 10 }}
             rowTextStyle={{
               left: 10,
               position: 'absolute',
             }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
+            rowTextForSelection={(item, index) => item}
             defaultButtonText="Complexion"
           />
         </View>
-        <View style={{paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Blood Group
           </Text>
           <SelectDropdown
-            data={data}
+            data={bloodGroupOptions}
             buttonStyle={style.dropdownText}
             buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
+            onSelect={(selectedItem) => setSelectedBloodGroup(selectedItem)}
+            buttonTextAfterSelection={(selectedItem, index) => selectedItem}
+            dropdownStyle={{ borderRadius: 10 }}
             rowTextStyle={{
               left: 10,
               position: 'absolute',
             }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
+            rowTextForSelection={(item, index) => item}
             defaultButtonText="Blood Group"
           />
         </View>
-        <View style={{paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Spectacles
           </Text>
           <SelectDropdown
-            data={data}
+            data={spectaclesOptions}
             buttonStyle={style.dropdownText}
             buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
+            onSelect={(selectedItem) => setSelectedSpectacles(selectedItem)}
+            buttonTextAfterSelection={(selectedItem, index) => selectedItem}
+            dropdownStyle={{ borderRadius: 10 }}
             rowTextStyle={{
               left: 10,
               position: 'absolute',
             }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
+            rowTextForSelection={(item, index) => item}
             defaultButtonText="Spectacles"
           />
         </View>
-        <View style={{paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Mangalik
           </Text>
           <SelectDropdown
-            data={data}
+            data={mangalikOptions}
             buttonStyle={style.dropdownText}
             buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
+            onSelect={(selectedItem) => setSelectedMangalik(selectedItem)}
+            buttonTextAfterSelection={(selectedItem, index) => selectedItem}
+            dropdownStyle={{ borderRadius: 10 }}
             rowTextStyle={{
               left: 10,
               position: 'absolute',
             }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
+            rowTextForSelection={(item, index) => item}
             defaultButtonText="Mangalik"
           />
         </View>
-        <View style={{width: '100%', paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Height
           </Text>
           <RNSTextInput
             placeHolder={'Enter your Height'}
             keyboard={'numeric'}
-            onChangeText={e => setPhoneNumber(e)}
-            value={''}
+            onChangeText={(text) => setHeight(text)}
+            value={height}
             maxLength={10}
           />
         </View>
-
-        <View style={{width: '100%', paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Weight
           </Text>
           <RNSTextInput
             placeHolder={'Enter your Weight'}
             keyboard={'numeric'}
-            onChangeText={e => setPhoneNumber(e)}
-            value={''}
+            onChangeText={(text) => setWeight(text)}
+            value={weight}
             maxLength={10}
           />
         </View>
-
-        <View style={{paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Education
           </Text>
           <SelectDropdown
-            data={data}
+            data={educationOptions}
             buttonStyle={style.dropdownText}
             buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
+            onSelect={(selectedItem) => setSelectedEducation(selectedItem)}
+            buttonTextAfterSelection={(selectedItem, index) => selectedItem}
+            dropdownStyle={{ borderRadius: 10 }}
             rowTextStyle={{
               left: 10,
               position: 'absolute',
             }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
+            rowTextForSelection={(item, index) => item}
             defaultButtonText="Select Education"
           />
         </View>
-          
-        <View style={{paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Hobbies
           </Text>
           <SelectDropdown
-            data={data}
+            data={educationOptions}
             buttonStyle={style.dropdownText}
             buttonTextStyle={style.placeholder}
-            onSelect={selectedItem => {
-              setSelectedItem(selectedItem);
-            }}
-            // dropdownStyle={{alignItems: 'center',backgroundColor:'red', justifyContent: 'center'}}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text to show after item is selected
-              return selectedItem;
-            }}
-            dropdownStyle={{borderRadius: 10}}
+            onSelect={(selectedItem) => setSelectedHobbies(selectedItem)}
+            buttonTextAfterSelection={(selectedItem, index) => selectedItem}
+            dropdownStyle={{ borderRadius: 10 }}
             rowTextStyle={{
               left: 10,
               position: 'absolute',
             }}
-            rowTextForSelection={(item, index) => {
-              // text to show for each item in the dropdown
-              return item;
-            }}
+            rowTextForSelection={(item, index) => item}
             defaultButtonText="Hobbies"
           />
         </View>
-        <View style={{width: '100%', paddingTop: 10}}>
-          <Text style={[styles.h6, {paddingBottom: 10, color: colors.gray}]}>
+        <View style={{ width: '100%', paddingTop: 10 }}>
+          <Text style={[styles.h6, { paddingBottom: 10, color: colors.gray }]}>
             Address
           </Text>
           <RNSTextInput
             placeHolder={'Enter your Address'}
             keyboard={'numeric'}
-            onChangeText={e => setPhoneNumber(e)}
-            value={''}
+            onChangeText={(text) => setAddress(text)}
+            value={address}
             maxLength={10}
           />
         </View>
@@ -249,9 +192,6 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // width:'400'
-    // paddingHorizontal: 25,
-    // paddingVertical: 20,
   },
   dropdownText: {
     fontSize: 12,

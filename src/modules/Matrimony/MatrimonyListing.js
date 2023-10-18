@@ -58,13 +58,8 @@ export default function MatrimonyListing({navigation}) {
       {/* Header */}
       <View>
         <View style={style.header}>
-          <Icon
-            name="menu-outline"
-            type="ionicon"
-            color={colors.black}
-            size={25}
-          />
-          <View style={{flexDirection: 'row'}}>
+          <View></View>
+          <View style={{flexDirection: 'row',width:100,justifyContent:"space-around"}}>
             <Icon
               name="search-outline"
               type="ionicon"
@@ -72,7 +67,7 @@ export default function MatrimonyListing({navigation}) {
               size={25}
             />
             <Icon
-              name="notifications-outline"
+              name="heart-outline"
               type="ionicon"
               color={colors.black}
               size={25}

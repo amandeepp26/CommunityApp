@@ -1,26 +1,15 @@
 import {StyleSheet, Text, View, Pressable, ScrollView} from 'react-native';
 import React, {useState} from 'react';
-import SelectDropdown from 'react-native-select-dropdown';
-import {Icon} from 'react-native-elements';
-import {CheckBox} from 'react-native-elements';
-import DateTimePicker from 'react-native-modal-datetime-picker';
-import moment from 'moment';
 import styles from '../../navigation/styles';
 import RNSTextInput from '../../../components/RNSTextInput';
 import {colors, fonts} from '../../../styles';
-import Button from '../../../components/Button';
 
 export default function Step3({navigation}) {
-  const [selectedItem, setSelectedItem] = useState('');
-  const [fatherName, setfatherName] = useState('');
-  const [fatherOccupation, setfatherOccupation] = useState('');
   const [annualIncome, setannualIncome] = useState('');
-  const [phone, setphone] = useState('');
   const [occupation, setoccupation] = useState('');
   const [industry, setindustry] = useState('');
   const [partnerPreference, setPartnerPreference] = useState('');
 
-  const data = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
   return (
     <ScrollView>
       <View style={style.container}>

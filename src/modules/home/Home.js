@@ -3,10 +3,11 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import styles from '../navigation/styles';
 import NotSubscribed from '../../components/NotSubscribed';
+import { useSelector } from 'react-redux';
 
 // create a component
 function Home({navigation}) {
-  
+  const otp = useSelector(state=>state.signin.otp)
   return (
     <View style={style.container}>
       <NotSubscribed

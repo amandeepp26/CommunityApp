@@ -1,12 +1,12 @@
-export const baseUrl = 'https://seller.estatedekho.com/';
-export const imgUrl = 'https://seller.estatedekho.com/';
+export const baseUrl = 'http://10.0.2.2:8000/';
+export const imgUrl = 'http://localhost:8000/api/';
 
 const apiClient = {
   Urls: {
     imgUrl,
     init: 'api/device/add',
-    login: 'api/web/sendOtp',
-    verifyOtp: 'api/web/verifyOtp',
+    login: 'api/users/send-otp',
+    verifyOtp: 'api/users/verify-otp',
     signup:'api/web/signup/sendOtp',
     verifySignupOtp: 'api/web/signup/verifyOtp',
     getProfile:"api/web/profile",

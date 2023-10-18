@@ -1,0 +1,130 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.communityapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:3:5-67
+11-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:3:22-64
+12    <!-- Required by older versions of Google Play services to create IID tokens -->
+13    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+13-->[com.google.android.gms:play-services-iid:17.0.0] /Users/aman/.gradle/caches/transforms-3/d23697d3ddc319769c3d2a6565d52bbc/transformed/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:5-82
+13-->[com.google.android.gms:play-services-iid:17.0.0] /Users/aman/.gradle/caches/transforms-3/d23697d3ddc319769c3d2a6565d52bbc/transformed/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:22-79
+14    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+14-->[com.android.installreferrer:installreferrer:1.1.2] /Users/aman/.gradle/caches/transforms-3/7159fdde894990131f3ba6437117d8d3/transformed/jetified-installreferrer-1.1.2/AndroidManifest.xml:9:5-110
+14-->[com.android.installreferrer:installreferrer:1.1.2] /Users/aman/.gradle/caches/transforms-3/7159fdde894990131f3ba6437117d8d3/transformed/jetified-installreferrer-1.1.2/AndroidManifest.xml:9:22-107
+15
+16    <application
+16-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:5:5-24:19
+17        android:name="com.communityapp.MainApplication"
+17-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:6:7-38
+18        android:allowBackup="false"
+18-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:10:7-34
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.7.0] /Users/aman/.gradle/caches/transforms-3/75e4635b66fa4e4e84e71b52579837ce/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+20        android:icon="@mipmap/ic_launcher"
+20-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:8:7-41
+21        android:label="@string/app_name"
+21-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:7:7-39
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:9:7-52
+23        android:theme="@style/AppTheme" >
+23-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:11:7-38
+24        <activity
+24-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:12:7-23:18
+25            android:name="com.communityapp.MainActivity"
+25-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:13:9-37
+26            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+26-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:15:9-118
+27            android:exported="true"
+27-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:18:9-32
+28            android:label="@string/app_name"
+28-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:14:9-41
+29            android:launchMode="singleTask"
+29-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:16:9-40
+30            android:windowSoftInputMode="adjustResize" >
+30-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:17:9-51
+31            <intent-filter>
+31-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:19:9-22:25
+32                <action android:name="android.intent.action.MAIN" />
+32-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:20:13-65
+32-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:20:21-62
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:21:13-73
+34-->/Users/aman/Documents/Apps/CommunityApp/android/app/src/main/AndroidManifest.xml:21:23-70
+35            </intent-filter>
+36        </activity>
+37
+38        <provider
+38-->[:react-native-image-picker] /Users/aman/Documents/Apps/CommunityApp/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-16:20
+39            android:name="com.imagepicker.ImagePickerProvider"
+39-->[:react-native-image-picker] /Users/aman/Documents/Apps/CommunityApp/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-63
+40            android:authorities="com.communityapp.imagepickerprovider"
+40-->[:react-native-image-picker] /Users/aman/Documents/Apps/CommunityApp/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-71
+41            android:exported="false"
+41-->[:react-native-image-picker] /Users/aman/Documents/Apps/CommunityApp/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-37
+42            android:grantUriPermissions="true" >
+42-->[:react-native-image-picker] /Users/aman/Documents/Apps/CommunityApp/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-47
+43            <meta-data
+43-->[:react-native-image-picker] /Users/aman/Documents/Apps/CommunityApp/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-15:70
+44                android:name="android.support.FILE_PROVIDER_PATHS"
+44-->[:react-native-image-picker] /Users/aman/Documents/Apps/CommunityApp/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:14:17-67
+45                android:resource="@xml/imagepicker_provider_paths" />
+45-->[:react-native-image-picker] /Users/aman/Documents/Apps/CommunityApp/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:15:17-67
+46        </provider>
+47
+48        <activity
+48-->[com.google.android.gms:play-services-base:17.0.0] /Users/aman/.gradle/caches/transforms-3/5b96e62b05f95da8d3a5ab6208c82b4e/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+49            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+49-->[com.google.android.gms:play-services-base:17.0.0] /Users/aman/.gradle/caches/transforms-3/5b96e62b05f95da8d3a5ab6208c82b4e/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+50            android:exported="false"
+50-->[com.google.android.gms:play-services-base:17.0.0] /Users/aman/.gradle/caches/transforms-3/5b96e62b05f95da8d3a5ab6208c82b4e/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+51            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+51-->[com.google.android.gms:play-services-base:17.0.0] /Users/aman/.gradle/caches/transforms-3/5b96e62b05f95da8d3a5ab6208c82b4e/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+52
+53        <meta-data
+53-->[com.google.android.gms:play-services-basement:17.0.0] /Users/aman/.gradle/caches/transforms-3/8ba0bd3b0a22dcecb9dd228f042440f6/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+54            android:name="com.google.android.gms.version"
+54-->[com.google.android.gms:play-services-basement:17.0.0] /Users/aman/.gradle/caches/transforms-3/8ba0bd3b0a22dcecb9dd228f042440f6/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+55            android:value="@integer/google_play_services_version" />
+55-->[com.google.android.gms:play-services-basement:17.0.0] /Users/aman/.gradle/caches/transforms-3/8ba0bd3b0a22dcecb9dd228f042440f6/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+56
+57        <provider
+57-->[androidx.emoji2:emoji2:1.0.0] /Users/aman/.gradle/caches/transforms-3/223146ef33e3aa619e8b04649706e145/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+58            android:name="androidx.startup.InitializationProvider"
+58-->[androidx.emoji2:emoji2:1.0.0] /Users/aman/.gradle/caches/transforms-3/223146ef33e3aa619e8b04649706e145/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+59            android:authorities="com.communityapp.androidx-startup"
+59-->[androidx.emoji2:emoji2:1.0.0] /Users/aman/.gradle/caches/transforms-3/223146ef33e3aa619e8b04649706e145/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+60            android:exported="false" >
+60-->[androidx.emoji2:emoji2:1.0.0] /Users/aman/.gradle/caches/transforms-3/223146ef33e3aa619e8b04649706e145/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+61            <meta-data
+61-->[androidx.emoji2:emoji2:1.0.0] /Users/aman/.gradle/caches/transforms-3/223146ef33e3aa619e8b04649706e145/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+62                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+62-->[androidx.emoji2:emoji2:1.0.0] /Users/aman/.gradle/caches/transforms-3/223146ef33e3aa619e8b04649706e145/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+63                android:value="androidx.startup" />
+63-->[androidx.emoji2:emoji2:1.0.0] /Users/aman/.gradle/caches/transforms-3/223146ef33e3aa619e8b04649706e145/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+64            <meta-data
+64-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/aman/.gradle/caches/transforms-3/d5d05479173d466a6bd0989b3b3e5ef4/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+65                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+65-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/aman/.gradle/caches/transforms-3/d5d05479173d466a6bd0989b3b3e5ef4/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+66                android:value="androidx.startup" />
+66-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/aman/.gradle/caches/transforms-3/d5d05479173d466a6bd0989b3b3e5ef4/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+67        </provider>
+68
+69        <meta-data
+69-->[com.facebook.soloader:soloader:0.10.5] /Users/aman/.gradle/caches/transforms-3/ec3312a013bd7d8a70466a1977a1dba4/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:12:9-14:37
+70            android:name="com.facebook.soloader.enabled"
+70-->[com.facebook.soloader:soloader:0.10.5] /Users/aman/.gradle/caches/transforms-3/ec3312a013bd7d8a70466a1977a1dba4/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:13:13-57
+71            android:value="false" />
+71-->[com.facebook.soloader:soloader:0.10.5] /Users/aman/.gradle/caches/transforms-3/ec3312a013bd7d8a70466a1977a1dba4/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:14:13-34
+72    </application>
+73
+74</manifest>

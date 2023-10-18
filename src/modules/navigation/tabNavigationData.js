@@ -7,6 +7,7 @@
 
 import Splash from "../Splash/Splash";
 import Home from "../home/Home";
+import Profile from "../profile/Profile";
 
 
 const homeIcon = require('@images/home.png');
@@ -37,7 +38,7 @@ const tabNavigationData = [
   },
   {
     name: 'Profile',
-    component: Home,
+    component: Profile,
     icon: userIcon,
   },
   // {

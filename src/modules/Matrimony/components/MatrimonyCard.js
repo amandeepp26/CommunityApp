@@ -37,18 +37,10 @@ export default function MatrimonyCard({data,navigation}) {
             </Text>
             <Text style={[styles.h6, {fontWeight: 700}]}>{user.location}</Text>
           </View>
-          <View style={{marginLeft: 80}}>
-            <Icon
-              name="ellipsis-horizontal-outline"
-              type="ionicon"
-              color={colors.black}
-              size={20}
-            />
-          </View>
         </View>
         <View
           style={{flexDirection: 'row', alignItems: 'center', paddingTop: 11}}>
-          <Icon
+          {/* <Icon
             name="heart-outline"
             type="ionicon"
             color={colors.primaryColor}
@@ -61,7 +53,7 @@ export default function MatrimonyCard({data,navigation}) {
             color={colors.primaryColor}
             size={18}
             style={style.icon}
-          />
+          /> */}
           <Pressable style={style.button}>
             <View>
               <Text style={[styles.h6, {color: '#fff', fontWeight: 500}]}>
@@ -81,7 +73,7 @@ const style = StyleSheet.create({
     height: 170,
     padding: 20,
     position: 'relative',
-    marginTop: 12,
+    marginTop: 10,
   },
   icon: {
     borderWidth: 1.5,

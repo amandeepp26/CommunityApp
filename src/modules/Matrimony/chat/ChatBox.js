@@ -47,11 +47,10 @@ export default function ChatBox({navigation}) {
           <Text style={[styles.h3, {fontWeight: '700', paddingLeft: 10}]}>
             Kartik Sharma
           </Text>
-          <Text style={{fontSize:12,paddingTop:5,paddingLeft:5}}>10:23 PM</Text>
         </View>
         
       </View>
-      <ScrollView style={{backgroundColor: colors.white, marginTop: 5}}>
+      <ScrollView style={{backgroundColor: colors.white, marginTop: 3}}>
         <View
           style={{
             alignItems: 'center',
@@ -104,7 +103,7 @@ export default function ChatBox({navigation}) {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#f5f5f5',
   },
   header: {
     flexDirection: 'row',

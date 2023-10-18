@@ -4,8 +4,11 @@ import styles from '../navigation/styles';
 import {colors} from '../../styles';
 import Button from '../../components/Button';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+import { setOTP } from './signin';
+import { useDispatch } from 'react-redux';
 
 export default function SignupVerification({navigation}) {
+  const dispatch = useDispatch();
   return (
     <View style={style.container}>
             <View>
@@ -34,7 +37,9 @@ export default function SignupVerification({navigation}) {
             pinCount={4}
             autoFocusOnLoad
             keyboardType="number-pad"
-
+            onCodeFilled={(e)=>dispatch(setOTP(e))}
+            codeInputFieldStyle={style.underlineStyleBase}
+            codeInputHighlightStyle={style.underlineStyleHighLighted}
           />
         <Button
           text={'Verify'}
@@ -59,5 +64,23 @@ const style = StyleSheet.create({
     alignItems: 'start',
     backgroundColor: '#fff',
     paddingHorizontal: 25,
+  },
+  underlineStyleBase: {
+    width: 50,
+    height: 50,
+    borderRadius: 5,
+    borderWidth: 1,
+    backgroundColor: '#FAFCFF',
+    borderColor: '#D3DAE6',
+    color: colors.black,
+    fontFamily: 'Poppins-Medium',
+    fontSize: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+
+  underlineStyleHighLighted: {
+    borderColor: colors.gray,
   },
 });

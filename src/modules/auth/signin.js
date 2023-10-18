@@ -89,13 +89,13 @@ export const setOTP = otp => {
 export const requestOtp = callback => async (dispatch, getState) => {
   const state = getState();
   const {phone_number} = state.signin;
-  console.warn('cll', callback);
+  console.warn('cll', callback,phone_number);
   try {
     dispatch({
       type: LOADING_START,
     });
     const response = await apiClient.post(apiClient.Urls.login, {
-      mobile: phone_number,
+      phone: phone_number,
     });
 
     console.log('Request OTP---------->', response);
@@ -200,14 +200,14 @@ export const validateOtp = () => async (dispatch, getState) => {
       type: LOGIN_START,
     });
     const response = await apiClient.post(apiClient.Urls.verifyOtp, {
-      mobile: phone_number,
+      phone: phone_number,
       otp: otp,
     });
 
     console.log('Log in---------->', response);
 
     if (response.success) {
-      dispatch(setAuthData(response.profile.authToken, response.profile));
+      dispatch(setAuthData(response.token, response.user));
       Toast.show({text1: response.message || 'Login Success', type: 'success'});
       dispatch(skipNow(false));
       dispatch({
